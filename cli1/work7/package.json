@@ -1,0 +1,5 @@
+{
+    "name": "book",
+    "main": "book.js",
+    "type": "module"
+}
