@@ -1,6 +1,6 @@
 import { Contact } from "./contact.js";
 
-class contactBook{
+class ContactBook{
 
     #contacts;
 
@@ -8,22 +8,12 @@ class contactBook{
         this.#contacts = new Array();
     }
 
-    // generateID(){
-    //     while(idUnique == false){
-    //         id++;
-    //         for(let curr = 0; curr < this.#contacts.length; curr++){
-
-    //         }
-    //     }
-    // }
-
-
     addContact(newContact)
     {
         //let newContact = new Contact;
         //---------------------------------------------------------------------------------------
         //---------------------------------------------------------------------------------------
-        function generateID()
+        function generateID(...contacts)
         {
             let idUnique = false;
             let id = 0;
@@ -31,8 +21,8 @@ class contactBook{
                 idUnique = true;
                 id++;
 
-                for(let curr = 0; curr < this.#contacts.length; curr++){
-                    if(id == this.#contacts[curr].id){
+                for(let curr = 0; curr < contacts.length; curr++){
+                    if(id == contacts[curr].id){
                         idUnique = false;
                     }
                 }
@@ -41,7 +31,7 @@ class contactBook{
         }
         //---------------------------------------------------------------------------------------
         //---------------------------------------------------------------------------------------
-        newContact.id = generateID();
+        newContact.id = generateID(this.#contacts);
         this.#contacts.push(newContact);
     }
 
@@ -49,18 +39,17 @@ class contactBook{
         return this.#contacts[num];
     }
 
+    get contacts(){
+        return this.#contacts;
+    }
 
+    removeContacts(place, quantity){
+        if(place >= 0 && quantity >= 0 && place + quantity <= this.#contacts.length){
+            this.#contacts.splice(place, quantity);
+        }
+    }
 
-
-    //removeContacts(place, quantity);
-
+    
 }
 
-
-
-
-let a = new contactBook();
-let b = new Contact();
-a.addContact(b);
-console.log(a.getContact(0).id);
-
+export {ContactBook};

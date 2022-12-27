@@ -1,5 +1,3 @@
-//console.log(1);
-
 class Contact{
     #id;
     #name;
@@ -29,14 +27,21 @@ class Contact{
         this.#name = name;
     }
 
-    getPhone(num){
-        if(num > 0 && num < this.#phones.length){
-            return this.#phones[num];
-        }
+    // getPhone(num){
+    //     if(num > 0 && num < this.#phones.length){
+    //         return this.#phones[num];
+    //     }
+    // }
+
+    get phones(){
+        return this.#phones;
     }
 
     addPhone(phone){
-        this.#phones.push(phone);
+        const phonePattern = new RegExp('/+375 (29|44) [0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]');//+375
+        if(phone.length == 17){
+            this.#phones.push(phone);
+        }
     }
 
     removePhones(pos, quant){
@@ -53,17 +58,5 @@ class Contact{
         this.comment = comment;
     }
 }
-
-// let contacts = new Array(2);
-// contacts[0] = new Contact();
-// contacts[1] = new Contact();
-
-// contacts[1].name = 'Jimmy';
-// contacts[1].id = '123ifg456_o';
-// contacts[1].addPhone('+375 29 567-89-02');
-// contacts[1].addPhone('+375 34 555-22-11');
-// contacts[1].comment = 'dumb as fuck';
-
-// console.log(contacts[1]);
 
 export {Contact};
