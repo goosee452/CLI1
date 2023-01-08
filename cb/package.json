@@ -1,0 +1,10 @@
+{
+    "name": "book",
+    "main": "book.js",
+    "type": "module",
+    "dependencies": {
+        "prompt-sync": "^4.2.0",
+        "readline-sync": "^1.4.10",
+        "requirejs": "^2.3.6"
+    }
+}
